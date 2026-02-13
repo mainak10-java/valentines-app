@@ -2,63 +2,87 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  min-height: 100%;
   font-family: "Comic Sans MS", "Poppins", cursive, sans-serif;
 }
 
 /* Background */
 .valentine-bg {
-  height: 120vh;
-  width: 100vw;
+  min-height: 120vh;
+  width: 100%;
   background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 40%, #ffdde1 100%);
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  padding: 20px;
 }
 
 /* Main container */
 .container {
-  flex: auto;
+  display: flex;
   flex-direction: column;
-  gap: 10;
-  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 700px;
   text-align: center;
-  height: 100vh;
-  width: 100vw;
+  position: relative;
 }
 
 /* Heading styles */
 .title {
-  font-size: 3.2rem;
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
   color: #ff3366;
-  margin-top: 120px;
+  margin-top: 40px;
   animation: heartbeat 1.4s infinite;
 }
 
 .subtitle {
-  font-size: 2rem;
-  color: #ffffff;
+  font-size: clamp(1.2rem, 4vw, 2rem);
   margin-top: 10px;
-  opacity: 0.95;
-  /* transform: translate(-50%,-50%); */
   letter-spacing: 0.02em;
   text-align: center;
   color: #F9f1cc;
-  text-shadow: 2px 2px 0px #FFB650, 
-    4px 4px 0px #FFD662, 
-    6px 6px 0px  #FF80BF, 
-    8px 8px 0px #EF5097, 
+  text-shadow:
+    2px 2px 0px #FFB650,
+    4px 4px 0px #FFD662,
+    6px 6px 0px #FF80BF,
+    8px 8px 0px #EF5097,
     10px 10px 0px #6868AC;
-  margin-bottom: 40px;
+}
+
+/* Valentine text */
+.valentine {
+  font-family: 'Calligraffitti', cursive;
+  font-weight: 700;
+  font-size: clamp(2rem, 6vw, 4rem);
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: #F9f1cc;
+  margin: 10px 0 30px 0;
+
+  text-shadow:
+    2px 2px 0px #FFB650,
+    4px 4px 0px #FFD662,
+    6px 6px 0px #FF80BF,
+    8px 8px 0px #EF5097,
+    10px 10px 0px #6868AC;
+}
+
+/* Button row */
+.button-row {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 /* YES button */
 .yes-btn {
-  position: relative;
-  margin-top: 60px;
-  padding: 16px 34px;
-  font-size: 20px;
+  padding: 14px 26px;
+  font-size: clamp(16px, 4vw, 20px);
   border: none;
   border-radius: 999px;
   background: linear-gradient(135deg, #ff3366, #ff6b81);
@@ -70,28 +94,30 @@ html, body {
 
 /* YES hover animation */
 .yes-btn:hover {
-  transform: scale(1.12);
+  transform: scale(1.1);
   box-shadow: 0 16px 40px rgba(255, 51, 102, 0.6);
 }
 
 /* NO button */
 .no-btn {
   position: absolute;
-  padding: 14px 28px;
-  font-size: 18px;
+  padding: 12px 22px;
+  font-size: clamp(14px, 3.5vw, 18px);
   border: none;
   border-radius: 999px;
   background: #3b3b3b;
   color: white;
   cursor: pointer;
-
-  /* smooth diagonal motion */
   transition:
     top 0.28s cubic-bezier(.34,1.56,.64,1),
     left 0.28s cubic-bezier(.34,1.56,.64,1),
     transform 0.2s ease;
-
   box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+}
+
+/* Initial static state */
+.no-btn.static {
+  position: relative;
 }
 
 /* subtle hover bounce */
@@ -101,20 +127,18 @@ html, body {
 
 /* Love note page */
 .love-note {
-  font-size: 1.6rem;
+  font-size: clamp(1rem, 4vw, 1.6rem);
   letter-spacing: 0.02em;
   text-align: center;
   color: #F9f1cc;
-  text-shadow: 2px 2px 0px #FFB650, 
-    4px 4px 0px #FFD662, 
-    6px 6px 0px  #FF80BF, 
+  text-shadow:
+    2px 2px 0px #FFB650,
+    4px 4px 0px #FFD662,
+    6px 6px 0px #FF80BF,
     8px 8px 0px #EF5097;
-  margin-top: 30px;
-  max-width: 640px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 20px;
+  max-width: 90%;
   line-height: 1.6;
-  padding: 0 20px;
 }
 
 /* Heartbeat animation */
@@ -126,13 +150,13 @@ html, body {
   100% { transform: scale(1); }
 }
 
-/* Soft floating glow particles (cheesy effect) */
+/* Soft floating glow particles */
 .valentine-bg::before,
 .valentine-bg::after {
   content: "";
   position: absolute;
-  width: 300px;
-  height: 300px;
+  width: 220px;
+  height: 220px;
   background: radial-gradient(circle, rgba(255,255,255,0.25), transparent);
   border-radius: 50%;
   animation: floatGlow 8s infinite ease-in-out;
@@ -144,42 +168,37 @@ html, body {
 }
 
 .valentine-bg::after {
-  bottom: -100px;
-  right: -100px;
+  bottom: -80px;
+  right: -80px;
 }
 
 @keyframes floatGlow {
   0% { transform: translateY(0px); opacity: 0.5; }
-  50% { transform: translateY(30px); opacity: 0.8; }
+  50% { transform: translateY(25px); opacity: 0.8; }
   100% { transform: translateY(0px); opacity: 0.5; }
 }
-.button-row {
-  margin-top: 60px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
 
-.no-btn.static {
-  position: relative;
-}
+/* ----------- SMALL PHONE SPECIFIC ----------- */
+@media (max-width: 480px) {
 
-.valentine {
-  font-family: 'Calligraffitti', cursive;
-  font-weight: 700;
-  font-size: 1.5rem;
-  position: absolute;
-  text-shadow: -5px 2px 7px #ced0d3;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  letter-spacing: 0.02em;
-  text-align: center;
-  color: #F9f1cc;
-  text-shadow: 2px 2px 0px #FFB650, 
-    4px 4px 0px #FFD662, 
-    6px 6px 0px  #FF80BF, 
-    8px 8px 0px #EF5097, 
-    10px 10px 0px #6868AC;
-  margin-bottom: 40px;
+  .title {
+    margin-top: 20px;
+  }
+
+  .button-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .yes-btn {
+    width: 70%;
+  }
+
+  .no-btn.static {
+    width: 70%;
+  }
+
+  .love-note {
+    padding: 0 10px;
+  }
 }
