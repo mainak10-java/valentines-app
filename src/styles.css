@@ -1,0 +1,185 @@
+/* Reset */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Comic Sans MS", "Poppins", cursive, sans-serif;
+}
+
+/* Background */
+.valentine-bg {
+  height: 120vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 40%, #ffdde1 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Main container */
+.container {
+  flex: auto;
+  flex-direction: column;
+  gap: 10;
+  position: relative;
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Heading styles */
+.title {
+  font-size: 3.2rem;
+  color: #ff3366;
+  margin-top: 120px;
+  animation: heartbeat 1.4s infinite;
+}
+
+.subtitle {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-top: 10px;
+  opacity: 0.95;
+  /* transform: translate(-50%,-50%); */
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: #F9f1cc;
+  text-shadow: 2px 2px 0px #FFB650, 
+    4px 4px 0px #FFD662, 
+    6px 6px 0px  #FF80BF, 
+    8px 8px 0px #EF5097, 
+    10px 10px 0px #6868AC;
+  margin-bottom: 40px;
+}
+
+/* YES button */
+.yes-btn {
+  position: relative;
+  margin-top: 60px;
+  padding: 16px 34px;
+  font-size: 20px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff3366, #ff6b81);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(255, 51, 102, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* YES hover animation */
+.yes-btn:hover {
+  transform: scale(1.12);
+  box-shadow: 0 16px 40px rgba(255, 51, 102, 0.6);
+}
+
+/* NO button */
+.no-btn {
+  position: absolute;
+  padding: 14px 28px;
+  font-size: 18px;
+  border: none;
+  border-radius: 999px;
+  background: #3b3b3b;
+  color: white;
+  cursor: pointer;
+
+  /* smooth diagonal motion */
+  transition:
+    top 0.28s cubic-bezier(.34,1.56,.64,1),
+    left 0.28s cubic-bezier(.34,1.56,.64,1),
+    transform 0.2s ease;
+
+  box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+}
+
+/* subtle hover bounce */
+.no-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Love note page */
+.love-note {
+  font-size: 1.6rem;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: #F9f1cc;
+  text-shadow: 2px 2px 0px #FFB650, 
+    4px 4px 0px #FFD662, 
+    6px 6px 0px  #FF80BF, 
+    8px 8px 0px #EF5097;
+  margin-top: 30px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  padding: 0 20px;
+}
+
+/* Heartbeat animation */
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  20% { transform: scale(1.12); }
+  40% { transform: scale(1); }
+  60% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+/* Soft floating glow particles (cheesy effect) */
+.valentine-bg::before,
+.valentine-bg::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,255,255,0.25), transparent);
+  border-radius: 50%;
+  animation: floatGlow 8s infinite ease-in-out;
+}
+
+.valentine-bg::before {
+  top: -80px;
+  left: -80px;
+}
+
+.valentine-bg::after {
+  bottom: -100px;
+  right: -100px;
+}
+
+@keyframes floatGlow {
+  0% { transform: translateY(0px); opacity: 0.5; }
+  50% { transform: translateY(30px); opacity: 0.8; }
+  100% { transform: translateY(0px); opacity: 0.5; }
+}
+.button-row {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.no-btn.static {
+  position: relative;
+}
+
+.valentine {
+  font-family: 'Calligraffitti', cursive;
+  font-weight: 700;
+  font-size: 1.5rem;
+  position: absolute;
+  text-shadow: -5px 2px 7px #ced0d3;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: #F9f1cc;
+  text-shadow: 2px 2px 0px #FFB650, 
+    4px 4px 0px #FFD662, 
+    6px 6px 0px  #FF80BF, 
+    8px 8px 0px #EF5097, 
+    10px 10px 0px #6868AC;
+  margin-bottom: 40px;
+}
